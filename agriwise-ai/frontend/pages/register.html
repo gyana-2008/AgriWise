@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📝 Register Account — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body style="background: radial-gradient(circle at 50% 10%, #ecfdf5 0%, #f8fafc 80%);">
+
+  <main class="page-wrapper" style="display: flex; align-items: center; justify-content: center; padding-top: 3rem; padding-bottom: 4rem;">
+    <div class="container" style="max-width: 640px;">
+      <div class="card" style="padding: 2.5rem; box-shadow: var(--shadow-xl);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌾</div>
+          <h2 style="font-size: 1.75rem; color: var(--primary-900);">Join AgriWise AI</h2>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">Register your farm or agricultural enterprise</p>
+        </div>
+
+        <form onsubmit="handleRegister(event)">
+          <!-- User Type Selection (Section 5) -->
+          <div class="form-group">
+            <label class="form-label">I Am Registering As:</label>
+            <select id="regRole" class="form-control" onchange="toggleFarmerFields()" style="font-weight: 700;">
+              <option value="FARMER" selected>Farmer (Cultivator / Landowner)</option>
+              <option value="DEALER">Agricultural Input Dealer (Seeds / Fertilizer / Tools)</option>
+              <option value="TRANSPORTER">Transport Logistics Provider (Trucks / Fleet)</option>
+              <option value="BUYER">Wholesale Grain Buyer / Food Processing Miller</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="regName" class="form-control" placeholder="e.g. Gurpreet Singh" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number</label>
+              <input type="tel" id="regPhone" class="form-control" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address (Optional)</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="gurpreet@example.com">
+          </div>
+
+          <!-- Farmer-Specific Profile Fields (Section 5) -->
+          <div id="farmerFields">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">State</label>
+                <select id="regState" class="form-control">
+                  <option value="Punjab" selected>Punjab</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">District</label>
+                <input type="text" id="regDistrict" class="form-control" value="Ludhiana" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Village / Locality</label>
+                <input type="text" id="regVillage" class="form-control" value="Sahnewal" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Farming Experience (Years)</label>
+                <input type="number" id="regExp" class="form-control" value="12" min="1" max="60" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Farm Size (Acres)</label>
+                <input type="number" id="regSize" class="form-control" value="5.0" step="0.5" min="0.5" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Irrigation Method</label>
+                <select id="regIrrig" class="form-control">
+                  <option value="Subsurface Drip + Tube-well" selected>Subsurface Drip + Tube-well</option>
+                  <option value="Canal Distributary">Canal Distributary</option>
+                  <option value="Overhead Sprinkler">Overhead Sprinkler</option>
+                  <option value="Flood Furrow">Flood Furrow</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Main Existing Crops</label>
+              <input type="text" id="regCrops" class="form-control" value="Maize, Wheat, Mustard">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" style="margin-top: 1.5rem;">
+            <span>Create Account & Verify Mobile ➔</span>
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.88rem; color: var(--text-muted);">
+          Already registered? <a href="/login" style="font-weight: 700;">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    function toggleFarmerFields() {
+      const role = document.getElementById('regRole').value;
+      document.getElementById('farmerFields').style.display = role === 'FARMER' ? 'block' : 'none';
+    }
+
+    async function handleRegister(e) {
+      e.preventDefault();
+      const role = document.getElementById('regRole').value;
+      const phone = document.getElementById('regPhone').value;
+      localStorage.setItem('agriwise_pending_phone', phone);
+      alert(`OTP verification code (4-digit: 1234) dispatched to ${phone}.`);
+      window.location.href = "/verify-account";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💹 Bloomberg Mandi Market Intelligence — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <!-- Title Section -->
+      <div class="page-title-bar">
+        <div class="page-title-left">
+          <h1>💹 AgriWise Terminal: Crop Market Intelligence</h1>
+          <p>Real-time commodity spot rates, historical price curves, arrival volumes, and volatility analytics across Indian Mandis.</p>
+        </div>
+        <div class="page-title-actions">
+          <a href="/crop-demand" class="btn btn-secondary btn-sm">📊 Demand Meters</a>
+          <a href="/crop-shortage" class="btn btn-primary btn-sm">Next: National Shortage Map ➔</a>
+        </div>
+      </div>
+
+      <!-- Commodity Filter Bar -->
+      <div class="card" style="margin-bottom: 2rem; background: #064e3b; color: #fff;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="font-weight: 700; font-size: 1.1rem; color: #34d399;">Selected Commodity:</div>
+            <select id="commoditySelect" class="form-control" style="width: 200px; background: #042f24; color: #fff; border-color: #059669; font-weight: 700;" onchange="updateMarketView()">
+              <option value="Maize" selected>Maize (Corn)</option>
+              <option value="Soybean">Soybean</option>
+              <option value="Wheat">Wheat</option>
+              <option value="Basmati Rice">Basmati Rice</option>
+              <option value="Tomato">Tomato</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-sm btn-outline-emerald" style="color: #fff; border-color: rgba(255,255,255,0.4);" onclick="setTimeRange('7D')">7D</button>
+            <button class="btn btn-sm btn-primary" onclick="setTimeRange('30D')">30D</button>
+            <button class="btn btn-sm btn-outline-emerald" style="color: #fff; border-color: rgba(255,255,255,0.4);" onclick="setTimeRange('90D')">90D</button>
+            <button class="btn btn-sm btn-outline-emerald" style="color: #fff; border-color: rgba(255,255,255,0.4);" onclick="setTimeRange('1Y')">1Y</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Metric Ticker Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+        <div class="card" style="border-left: 4px solid #10b981;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">SPOT MODAL PRICE</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #059669; margin: 4px 0;" id="spotPrice">₹2,360 / q</div>
+          <div style="font-size: 0.8rem; color: #059669; font-weight: 700;">▲ +3.2% vs Last Week</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--accent-amber);">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">REGIONAL SHORTAGE DEFICIT</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #b45309; margin: 4px 0;" id="deficitMetric">23,000 Tonnes</div>
+          <div style="font-size: 0.8rem; color: #b45309; font-weight: 700;">41.8% Supply Deficit in Punjab</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--accent-sky);">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">DAILY ARRIVALS</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #0284c7; margin: 4px 0;" id="arrivalsMetric">480 Tonnes</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Khanna & Ludhiana Mandis</div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #8b5cf6;">
+          <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">MSP BENCHMARK</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #6d28d9; margin: 4px 0;" id="mspMetric">₹2,090 / q</div>
+          <div style="font-size: 0.8rem; color: #059669; font-weight: 700;">₹270 Premium Over Govt MSP</div>
+        </div>
+      </div>
+
+      <!-- Price Trend Curve & Market Volatility Analysis -->
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- Left: Canvas Price Curve -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">📈</span>
+              <span id="chartTitle">Khanna Mandi 30-Day Spot Price Trend (₹/Quintal)</span>
+            </div>
+            <span class="badge badge-emerald">Live Verified</span>
+          </div>
+
+          <canvas id="mandiTrendCanvas" style="width: 100%; height: 260px;"></canvas>
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem;">
+            <span>30-Day Low: <strong>₹2,180</strong></span>
+            <span>Average: <strong>₹2,295</strong></span>
+            <span>30-Day High: <strong>₹2,420</strong></span>
+          </div>
+        </div>
+
+        <!-- Right: Market Volatility & Liquidity Breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">📊</span>
+              <span>Market Fundamentals</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md);">
+              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">DEMAND SENTIMENT</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: #059669; margin: 2px 0;">Aggressive Procurement</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">Industrial poultry feed compounding mills operating on lean buffer inventories.</div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md);">
+              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">HARVEST PRESSURE FORECAST</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: #b45309; margin: 2px 0;">Moderate Inflow</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">Peak new-crop arrivals expected in 3 weeks; contract sales recommended now.</div>
+            </div>
+
+            <a href="/buyer-marketplace" class="btn btn-amber btn-sm btn-full">
+              <span>🏢 Connect with Verified Food Millers ➔</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regional Mandi Comparison Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">🏪</span>
+            <span>Regional Mandi Spot Comparison (Punjab, Haryana & National Hubs)</span>
+          </div>
+          <span class="badge badge-emerald">Updated Today (10:30 AM)</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mandi / APMC Yard</th>
+                <th>State</th>
+                <th>Modal Price</th>
+                <th>Min Price</th>
+                <th>Max Price</th>
+                <th>Daily Arrivals</th>
+                <th>24h Movement</th>
+                <th>Demand Sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Khanna Grain Mandi (Asia's Largest)</strong></td>
+                <td>Punjab</td>
+                <td style="font-weight: 800; color: #059669;">₹2,360 / q</td>
+                <td>₹2,200</td>
+                <td>₹2,480</td>
+                <td>480 Tonnes</td>
+                <td><span class="badge badge-emerald">+3.2%</span></td>
+                <td><strong style="color: #059669;">Very High</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ludhiana New Grain Market</strong></td>
+                <td>Punjab</td>
+                <td style="font-weight: 800; color: #059669;">₹2,340 / q</td>
+                <td>₹2,180</td>
+                <td>₹2,450</td>
+                <td>310 Tonnes</td>
+                <td><span class="badge badge-emerald">+2.6%</span></td>
+                <td><strong style="color: #059669;">High</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Karnal Mandi Complex</strong></td>
+                <td>Haryana</td>
+                <td style="font-weight: 800; color: #059669;">₹2,380 / q</td>
+                <td>₹2,250</td>
+                <td>₹2,510</td>
+                <td>520 Tonnes</td>
+                <td><span class="badge badge-emerald">+4.1%</span></td>
+                <td><strong style="color: #059669;">Very High</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Indore APMC Market</strong></td>
+                <td>Madhya Pradesh</td>
+                <td style="font-weight: 800; color: #059669;">₹2,150 / q</td>
+                <td>₹2,050</td>
+                <td>₹2,240</td>
+                <td>850 Tonnes</td>
+                <td><span class="badge badge-rose">-1.5%</span></td>
+                <td><strong style="color: #64748b;">Surplus Steady</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      drawPriceTrend();
+    });
+
+    function drawPriceTrend() {
+      const labels = ['Day 1', 'Day 5', 'Day 10', 'Day 15', 'Day 20', 'Day 25', 'Day 30'];
+      const prices = [2180, 2210, 2240, 2290, 2310, 2340, 2360];
+      AgriCharts.drawLineChart('mandiTrendCanvas', labels, prices, {
+        lineColor: '#059669',
+        fillColor: 'rgba(16, 185, 129, 0.25)',
+        prefix: '₹'
+      });
+    }
+
+    function updateMarketView() {
+      const val = document.getElementById('commoditySelect').value;
+      if (val === 'Soybean') {
+        document.getElementById('spotPrice').innerText = '₹4,720 / q';
+        document.getElementById('deficitMetric').innerText = '38,000 Tonnes';
+        document.getElementById('chartTitle').innerText = 'Indore Mandi 30-Day Soybean Price Trend (₹/q)';
+        AgriCharts.drawLineChart('mandiTrendCanvas', ['D1', 'D5', 'D10', 'D15', 'D20', 'D25', 'D30'], [4450, 4520, 4590, 4620, 4680, 4700, 4720], { prefix: '₹' });
+      } else {
+        document.getElementById('spotPrice').innerText = '₹2,360 / q';
+        document.getElementById('deficitMetric').innerText = '23,000 Tonnes';
+        document.getElementById('chartTitle').innerText = 'Khanna Mandi 30-Day Maize Price Trend (₹/q)';
+        drawPriceTrend();
+      }
+    }
+
+    function setTimeRange(range) {
+      alert(`Filtering Mandi chart time range to ${range}`);
+    }
+  </script>
+</body>
+</html>

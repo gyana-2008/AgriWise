@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📦 Farmer Orders & Tenders — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <!-- Title Section -->
+      <div class="page-title-bar">
+        <div class="page-title-left">
+          <h1>📦 Farmer Input Orders & Mandi Contracts</h1>
+          <p>Track your seed/fertilizer purchases, transport bookings, and institutional crop supply contracts.</p>
+        </div>
+        <div class="page-title-actions">
+          <a href="/fertilizer-market" class="btn btn-primary btn-sm">+ Order Agricultural Inputs</a>
+        </div>
+      </div>
+
+      <!-- Orders List Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">📋</span>
+            <span>Active & Historical Agricultural Transactions</span>
+          </div>
+          <span class="badge badge-emerald">Live Database Verified</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Category</th>
+                <th>Item / Description</th>
+                <th>Partner / Merchant</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date Placed</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- Dynamically populated from /api/orders -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', loadOrders);
+
+    async function loadOrders() {
+      try {
+        const orders = await AgriAPI.getOrders();
+        const tbody = document.getElementById('ordersTableBody');
+        if (orders && orders.length > 0) {
+          tbody.innerHTML = orders.map(o => {
+            const isPaid = o.status === 'COMPLETED' || o.status === 'PAID';
+            const payType = o.order_type === 'TRANSPORT' ? 'transport' : (o.order_type === 'BUYER_OFFER' ? 'escrow' : 'fertilizer');
+            return `
+            <tr>
+              <td><strong>#ORD-00${o.id}</strong></td>
+              <td><span class="badge ${o.order_type === 'INPUT' ? 'badge-emerald' : (o.order_type === 'TRANSPORT' ? 'badge-blue' : 'badge-amber')}">${o.order_type}</span></td>
+              <td><strong>${o.item_title}</strong></td>
+              <td>${o.partner_name}</td>
+              <td>${o.quantity}</td>
+              <td style="font-weight: 800; color: var(--primary-900);">₹${o.amount_inr.toLocaleString('en-IN')}</td>
+              <td><span class="badge ${isPaid ? 'badge-emerald' : 'badge-amber'}">${o.status}</span></td>
+              <td style="font-size: 0.82rem; color: var(--text-muted);">${o.created_at}</td>
+              <td>
+                ${isPaid ? 
+                  `<a href="/payment" class="btn btn-sm btn-outline" style="padding: 3px 8px; font-size: 0.75rem;">Receipt</a>` :
+                  `<a href="/payment?type=${payType}&amount=${o.amount_inr}&recipient=${encodeURIComponent(o.partner_name)}&order_id=${o.id}" class="btn btn-sm btn-primary" style="padding: 3px 8px; font-size: 0.75rem; white-space: nowrap;">💳 Pay Now</a>`
+                }
+              </td>
+            </tr>
+          `;
+          }).join('');
+        } else {
+          tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted); padding: 2rem;">No orders placed yet. Browse the Input or Buyer marketplace.</td></tr>`;
+        }
+      } catch (e) {
+        console.warn("Using offline orders fallback", e);
+      }
+    }
+  </script>
+</body>
+</html>

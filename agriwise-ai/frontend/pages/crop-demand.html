@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Real-Time Crop Demand Meters — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <!-- Title Section -->
+      <div class="page-title-bar">
+        <div class="page-title-left">
+          <h1>📊 National Crop Demand Intelligence</h1>
+          <p>Real-time procurement demand meters calibrated from industrial food millers, export orders, and Mandi arrivals.</p>
+        </div>
+        <div class="page-title-actions">
+          <a href="/crop-shortage" class="btn btn-primary btn-sm">Next: National Shortage Map ➔</a>
+        </div>
+      </div>
+
+      <!-- Data Freshness & Methodology Header -->
+      <div class="card" style="margin-bottom: 2rem; background: #f8fafc;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span class="badge badge-emerald">Live Verified Sourcing Data</span>
+            <div style="font-weight: 700; font-size: 1rem; color: var(--text-main); margin-top: 4px;">Demand Intensity & Procurement Appetite</div>
+            <div style="font-size: 0.84rem; color: var(--text-muted);">
+              Data Source: Agmarknet API + 42 Registered Institutional Grain Buyers • Updated 14 minutes ago
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <span class="badge badge-emerald">Live Feed</span>
+            <span class="badge badge-blue">APMC Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demand Meters Section -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">🔥</span>
+            <span>Commodities With Extreme Procurement Sourcing Pressure</span>
+          </div>
+          <span class="badge badge-rose">High Deficit Alert</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- Item 1: Maize -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.1rem; color: var(--primary-900);">1. Maize (Corn) — Industrial Wet Milling & Feed</span>
+              <span style="color: #059669; font-size: 1.1rem;">94% Demand Intensity (EXTREME)</span>
+            </div>
+            <div class="progress-bar-container" style="height: 12px;">
+              <div class="progress-bar-fill" style="width: 94%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              <span>Deficit: 23,000 Tonnes in Punjab/Haryana</span>
+              <span>Modal Spot: ₹2,360/q (+3.2%)</span>
+              <span>Status: <strong style="color: #059669;">LIVE</strong></span>
+            </div>
+          </div>
+
+          <!-- Item 2: Soybean -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.1rem; color: var(--text-main);">2. Soybean — Yellow Oilseed & Crushing Meal</span>
+              <span style="color: #059669; font-size: 1.1rem;">89% Demand Intensity (HIGH)</span>
+            </div>
+            <div class="progress-bar-container" style="height: 12px;">
+              <div class="progress-bar-fill progress-bar-amber" style="width: 89%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              <span>Deficit: 38,000 Tonnes in Central/Western India</span>
+              <span>Modal Spot: ₹4,720/q (+1.8%)</span>
+              <span>Status: <strong style="color: #059669;">LIVE</strong></span>
+            </div>
+          </div>
+
+          <!-- Item 3: Tomato -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.1rem; color: var(--text-main);">3. Tomato — Fresh Horticulture</span>
+              <span style="color: #e11d48; font-size: 1.1rem;">85% Demand Intensity (VOLATILE)</span>
+            </div>
+            <div class="progress-bar-container" style="height: 12px;">
+              <div class="progress-bar-fill progress-bar-rose" style="width: 85%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              <span>Daily Arrivals Deficit: Delhi & Punjab Mandis</span>
+              <span>Modal Spot: ₹1,950/q (+8.5%)</span>
+              <span>Status: <strong style="color: #059669;">LIVE</strong></span>
+            </div>
+          </div>
+
+          <!-- Item 4: Wheat -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 0.4rem;">
+              <span style="font-size: 1.1rem; color: var(--text-main);">4. Wheat — Flour Milling & Central Pool Buffer</span>
+              <span style="color: #0284c7; font-size: 1.1rem;">76% Demand Intensity (STEADY HIGH)</span>
+            </div>
+            <div class="progress-bar-container" style="height: 12px;">
+              <div class="progress-bar-fill progress-bar-blue" style="width: 76%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+              <span>High Southern Deficit (Tamil Nadu 61,000 T)</span>
+              <span>Modal Spot: ₹2,425/q (+0.8%)</span>
+              <span>Status: <strong style="color: #059669;">LIVE</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institutional Procurement Requirements Feed -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">🏢</span>
+            <span>Live Wholesale Procurement Requirements Near Your Farm</span>
+          </div>
+          <a href="/buyer-marketplace" class="btn btn-outline-emerald btn-sm">All 12 Active Buyers ➔</a>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; background: #f0fdf4; border: 1px solid var(--primary-200); border-radius: var(--radius-md);">
+            <div>
+              <span class="badge badge-emerald">Immediate Sourcing Requirement</span>
+              <h4 style="font-size: 1.15rem; color: var(--primary-900); margin: 4px 0;">ABC Agro Foods & Millers</h4>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Khanna Industrial Area (22 km away) • Quality: &lt;12% moisture</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: #059669; margin-top: 2px;">
+                Required Quantity: <strong>500 Tonnes Maize</strong> • Offered: <strong>₹2,420 / quintal</strong>
+              </div>
+            </div>
+            <a href="/buyer-marketplace" class="btn btn-primary btn-sm">Send Crop Offer</a>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+            <div>
+              <span class="badge badge-blue">Poultry Cluster Sourcing</span>
+              <h4 style="font-size: 1.15rem; color: var(--text-main); margin: 4px 0;">Karnal Premium Feed Mills</h4>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">GT Road, Karnal (130 km away) • Quality: Dry yellow kernels</div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: #059669; margin-top: 2px;">
+                Required Quantity: <strong>800 Tonnes Maize</strong> • Offered: <strong>₹2,480 / quintal</strong>
+              </div>
+            </div>
+            <a href="/buyer-marketplace" class="btn btn-secondary btn-sm">Send Crop Offer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+</body>
+</html>

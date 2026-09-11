@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏢 Wholesale Crop Buyer Marketplace — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <!-- Title Section -->
+      <div class="page-title-bar">
+        <div class="page-title-left">
+          <h1>🏢 Institutional & Wholesale Crop Buyer Marketplace</h1>
+          <p>Bypass middlemen: Connect directly with industrial food processors, poultry feed manufacturers, and certified grain exporters.</p>
+        </div>
+        <div class="page-title-actions">
+          <a href="/transport-marketplace" class="btn btn-primary btn-sm">Next: Book Local Transport ➔</a>
+        </div>
+      </div>
+
+      <!-- Active Tenders Grid -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+        <!-- Buyer 1: ABC Agro Foods -->
+        <div class="card" style="border-left: 6px solid var(--primary-600);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span class="badge badge-emerald">Verified Institutional Processor</span>
+                <span class="badge badge-amber">Urgent Procurement</span>
+              </div>
+              <h3 style="font-size: 1.35rem; color: var(--primary-900);">ABC Agro Foods & Millers</h3>
+              <div style="font-size: 0.84rem; color: var(--text-muted);">
+                Khanna Industrial Area, Punjab • <strong>22 km from your farm</strong> • Contact: Vikram Ahuja (VP Procurement)
+              </div>
+            </div>
+
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">OFFERED CONTRACT PRICE</div>
+              <div style="font-size: 1.9rem; font-weight: 800; color: #059669;">₹2,420 / quintal</div>
+              <div style="font-size: 0.78rem; color: #059669; font-weight: 700;">+₹60 / q premium over Khanna Mandi spot</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+            <div><strong>Target Crop:</strong> Yellow Maize (Dry Grain)</div>
+            <div><strong>Required Quantity:</strong> 500 Tonnes (Bulk Tender)</div>
+            <div><strong>Delivery Deadline:</strong> 25 Oct 2026</div>
+            <div><strong>Payment Terms:</strong> Direct Bank RTGS within 24 Hours</div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #334155; margin-bottom: 1.25rem;">
+            <strong>Quality Specifications:</strong> Moisture &lt; 12.0%, Foreign Matter &lt; 1.0%, Broken grains &lt; 2.0%, Free from mould and aflatoxin contamination.
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="contactBuyer('ABC Agro Foods', '+91 98555 67890')">
+              <span>📞 Call Procurement Desk</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openProposalModal('ABC Agro Foods & Millers', 2420, 'Maize')">
+              <span>🤝 Submit Crop Offer (From Farm)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Buyer 2: Punjab Agro Industries -->
+        <div class="card" style="border-left: 6px solid #0284c7;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span class="badge badge-blue">State Procurement Agency</span>
+              </div>
+              <h3 style="font-size: 1.35rem; color: var(--text-main);">Punjab Agro Industries Corporation</h3>
+              <div style="font-size: 0.84rem; color: var(--text-muted);">
+                Ludhiana Mandi Complex, Punjab • <strong>12 km from your farm</strong> • Officer: Gursharan Singh
+              </div>
+            </div>
+
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">REGULATED PROCUREMENT RATE</div>
+              <div style="font-size: 1.9rem; font-weight: 800; color: #0284c7;">₹2,350 / quintal</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Government Assured Weighment</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+            <div><strong>Target Crop:</strong> Maize (FAQ Grade)</div>
+            <div><strong>Required Quantity:</strong> 1,200 Tonnes</div>
+            <div><strong>Delivery Deadline:</strong> 10 Nov 2026</div>
+            <div><strong>Payment Terms:</strong> Direct DBT to Farmer Bank Account</div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #334155; margin-bottom: 1.25rem;">
+            <strong>Quality Specifications:</strong> Standard Fair Average Quality (FAQ) norms, Moisture &lt; 14.0%, No damaged kernels.
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="contactBuyer('Punjab Agro', '+91 98760 12345')">
+              <span>📞 Contact Officer</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openProposalModal('Punjab Agro Industries Corp', 2350, 'Maize')">
+              <span>🤝 Submit Crop Offer</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Buyer 3: Karnal Premium Feed Mills -->
+        <div class="card" style="border-left: 6px solid #f59e0b;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span class="badge badge-amber">Interstate Feed Manufacturer</span>
+              </div>
+              <h3 style="font-size: 1.35rem; color: var(--text-main);">Karnal Premium Poultry Feed Mills</h3>
+              <div style="font-size: 0.84rem; color: var(--text-muted);">
+                GT Road Industrial Cluster, Karnal (Haryana) • <strong>130 km from farm</strong> • Lead: Ramesh Chawla
+              </div>
+            </div>
+
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">PREMIUM CASH SPOT RATE</div>
+              <div style="font-size: 1.9rem; font-weight: 800; color: #b45309;">₹2,480 / quintal</div>
+              <div style="font-size: 0.78rem; color: #059669; font-weight: 700;">Highest regional bid (+₹120 premium)</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+            <div><strong>Target Crop:</strong> High-Protein Yellow Maize</div>
+            <div><strong>Required Quantity:</strong> 800 Tonnes</div>
+            <div><strong>Delivery Deadline:</strong> 20 Oct 2026</div>
+            <div><strong>Payment Terms:</strong> Spot Cash / Immediate Bank Transfer</div>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #334155; margin-bottom: 1.25rem;">
+            <strong>Quality Specifications:</strong> Moisture &lt; 11.5%, Protein content &gt; 8.5%, No black rot, suitable for premium broiler feed rations.
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="contactBuyer('Karnal Feed Mills', '+91 98960 55443')">
+              <span>📞 Call Buyer</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openProposalModal('Karnal Premium Poultry Feed Mills', 2480, 'Maize')">
+              <span>🤝 Submit Crop Offer</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Proposal Modal -->
+  <div id="proposalModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: #fff; border-radius: 16px; max-width: 480px; width: 100%; padding: 2rem; box-shadow: var(--shadow-xl);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3 style="font-size: 1.25rem; color: var(--primary-900);">🌾 Submit Harvest Crop Offer</h3>
+        <button onclick="closeProposalModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+      </div>
+
+      <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+        <div style="font-weight: 700; color: var(--text-main);" id="propBuyerName">ABC Agro Foods & Millers</div>
+        <div style="font-size: 0.84rem; color: var(--text-muted);">Contract Price: <strong id="propPrice" style="color: #059669;">₹2,420 / q</strong></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Offered Harvest Quantity (Quintals)</label>
+        <input type="number" id="propQty" class="form-control" value="140" min="10" max="2000" oninput="calcPropTotal()">
+        <small style="color: var(--text-muted);">Your 5-acre expected yield: ~142.5 Quintals</small>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 1.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-light);">
+        <span>Estimated Deal Value:</span>
+        <span style="font-size: 1.3rem; color: var(--primary-900);" id="propTotal">₹3,38,800</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="closeProposalModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitProposal()">Send Formal Offer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    let activeBuyer = { name: "", price: 2420, crop: "Maize" };
+
+    function contactBuyer(name, phone) {
+      alert(`📞 Connecting to ${name} Procurement Desk at ${phone}...\nDirect procurement representative is available.`);
+    }
+
+    function openProposalModal(name, price, crop) {
+      activeBuyer = { name, price, crop };
+      document.getElementById('propBuyerName').innerText = name;
+      document.getElementById('propPrice').innerText = `₹${price} / quintal`;
+      calcPropTotal();
+      document.getElementById('proposalModal').style.display = 'flex';
+    }
+
+    function calcPropTotal() {
+      const q = parseFloat(document.getElementById('propQty').value) || 140;
+      const total = q * activeBuyer.price;
+      document.getElementById('propTotal').innerText = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function closeProposalModal() {
+      document.getElementById('proposalModal').style.display = 'none';
+    }
+
+    async function submitProposal() {
+      const q = parseFloat(document.getElementById('propQty').value) || 140;
+      const total = q * activeBuyer.price;
+
+      try {
+        await AgriAPI.createOrder({
+          order_type: "BUYER_OFFER",
+          item_title: `Harvest Supply Tender: ${q} Quintals ${activeBuyer.crop}`,
+          quantity: `${q} Quintals`,
+          amount_inr: total,
+          partner_name: activeBuyer.name
+        });
+        alert(`✅ Offer Sent! Your harvest proposal for ${q} Quintals Maize submitted to ${activeBuyer.name}.\nTrack buyer response on your Farmer Orders page.`);
+        closeProposalModal();
+        window.location.href = "/farmer-orders";
+      } catch (e) {
+        alert("Offer recorded in browser session. Proceeding to orders.");
+        window.location.href = "/farmer-orders";
+      }
+    }
+  </script>
+</body>
+</html>

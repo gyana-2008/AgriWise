@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌾 Seed Variety Recommendations & Comparison — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="container">
+      <!-- Title Section -->
+      <div class="page-title-bar">
+        <div class="page-title-left">
+          <h1>🌾 Certified Seed Varieties & Ranking</h1>
+          <p>Evaluating certified high-yield hybrid varieties for <strong>Maize (Kharif)</strong> based on Ludhiana soil affinity and disease tolerance.</p>
+        </div>
+        <div class="page-title-actions">
+          <button class="btn btn-secondary btn-sm" onclick="toggleCompareModal()">
+            <span>⚖️ Compare 3 Selected Varieties</span>
+          </button>
+          <a href="/cultivation-plan" class="btn btn-primary btn-sm">
+            <span>Next: Cultivation Timeline ➔</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Seed Variety Cards Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+        <!-- Seed 1: Pioneer P3396 -->
+        <div class="card" style="border: 2px solid var(--primary-500); display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div>
+              <span class="badge badge-amber" style="margin-bottom: 0.3rem;">Top AI Recommendation</span>
+              <h3 style="font-size: 1.35rem; color: var(--primary-900);">Pioneer P3396 Hybrid</h3>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Corteva Agriscience • Certified ICAR/NSC</div>
+            </div>
+            <div class="score-dial" style="width: 64px; height: 64px;">
+              <div class="score-number" style="font-size: 1.4rem;">95%</div>
+              <div class="score-label">MATCH</div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.84rem;">
+              <div><strong>Duration:</strong> 108 Days</div>
+              <div><strong>Seed Rate:</strong> 8 kg / acre</div>
+              <div><strong>Yield Range:</strong> <span style="color: #059669; font-weight: 700;">27 - 32 q/acre</span></div>
+              <div><strong>Price:</strong> ₹260 / kg (₹1,040 / 4kg)</div>
+              <div><strong>Water Req:</strong> Medium</div>
+              <div><strong>Drought Vigor:</strong> High</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; flex: 1;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Key Agronomic Features:</div>
+            <ul class="ai-reason-list" style="font-size: 0.82rem;">
+              <li>High resistance to Turcicum Leaf Blight & Downy Mildew</li>
+              <li>Superior cob girth with heavy shelling percentage (>82%)</li>
+              <li>Stay-green trait keeps stalk standing even in late winds</li>
+            </ul>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <a href="/cultivation-plan?seed=Pioneer-P3396" class="btn btn-primary btn-sm" onclick="AgriState.setSelectedSeed('Pioneer P3396 Hybrid')">
+              <span>✓ Select Seed</span>
+            </a>
+            <a href="/seed-details?id=1" class="btn btn-secondary btn-sm">
+              <span>View Specs</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Seed 2: Kaveri 50 Super -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div>
+              <span class="badge badge-emerald" style="margin-bottom: 0.3rem;">Early Maturity Option</span>
+              <h3 style="font-size: 1.35rem; color: var(--text-main);">Kaveri 50 Super Hybrid</h3>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Kaveri Seed Company Ltd</div>
+            </div>
+            <div class="score-dial" style="width: 64px; height: 64px; border-color: #f59e0b;">
+              <div class="score-number" style="font-size: 1.4rem; color: #b45309;">89%</div>
+              <div class="score-label">MATCH</div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.84rem;">
+              <div><strong>Duration:</strong> 102 Days</div>
+              <div><strong>Seed Rate:</strong> 7.5 kg / acre</div>
+              <div><strong>Yield Range:</strong> <span style="color: #059669; font-weight: 700;">24.5 - 28.5 q/acre</span></div>
+              <div><strong>Price:</strong> ₹220 / kg (₹880 / 4kg)</div>
+              <div><strong>Water Req:</strong> Low-Medium</div>
+              <div><strong>Drought Vigor:</strong> Medium</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; flex: 1;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Key Agronomic Features:</div>
+            <ul class="ai-reason-list" style="font-size: 0.82rem;">
+              <li>6 days shorter duration: clears field early for November Wheat</li>
+              <li>Uniform orange-yellow flint grains with good test weight</li>
+              <li>Lower seed investment per acre</li>
+            </ul>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <a href="/cultivation-plan?seed=Kaveri-50" class="btn btn-primary btn-sm" onclick="AgriState.setSelectedSeed('Kaveri 50 Super Hybrid')">
+              <span>✓ Select Seed</span>
+            </a>
+            <a href="/seed-details?id=2" class="btn btn-secondary btn-sm">
+              <span>View Specs</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Seed 3: CP 333 Bold -->
+        <div class="card" style="display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div>
+              <span class="badge badge-blue" style="margin-bottom: 0.3rem;">Industrial Starch Grade</span>
+              <h3 style="font-size: 1.35rem; color: var(--text-main);">CP 333 Bold Kernel</h3>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Charoen Pokphand Seeds</div>
+            </div>
+            <div class="score-dial" style="width: 64px; height: 64px; border-color: #0284c7;">
+              <div class="score-number" style="font-size: 1.4rem; color: #0369a1;">91%</div>
+              <div class="score-label">MATCH</div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.84rem;">
+              <div><strong>Duration:</strong> 112 Days</div>
+              <div><strong>Seed Rate:</strong> 8.0 kg / acre</div>
+              <div><strong>Yield Range:</strong> <span style="color: #059669; font-weight: 700;">26.0 - 30.5 q/acre</span></div>
+              <div><strong>Price:</strong> ₹245 / kg (₹980 / 4kg)</div>
+              <div><strong>Water Req:</strong> Medium</div>
+              <div><strong>Drought Vigor:</strong> High</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem; flex: 1;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Key Agronomic Features:</div>
+            <ul class="ai-reason-list" style="font-size: 0.82rem;">
+              <li>High starch recovery percentage preferred by Khanna food millers</li>
+              <li>Strong root anchoring system resisting stem lodging</li>
+              <li>Stalk Rot and Charcoal Rot field tolerance</li>
+            </ul>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <a href="/cultivation-plan?seed=CP-333" class="btn btn-primary btn-sm" onclick="AgriState.setSelectedSeed('CP 333 Bold Kernel')">
+              <span>✓ Select Seed</span>
+            </a>
+            <a href="/seed-details?id=3" class="btn btn-secondary btn-sm">
+              <span>View Specs</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seed Comparison Matrix Section -->
+      <div class="card" id="compareSection">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">⚖️</span>
+            <span>Side-by-Side Hybrid Variety Comparison Matrix</span>
+          </div>
+          <span class="badge badge-emerald">3 Varieties Evaluated</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Agronomic Parameter</th>
+                <th style="background: #ecfdf5; color: #065f46;">Pioneer P3396 Hybrid (Top AI)</th>
+                <th>Kaveri 50 Super</th>
+                <th>CP 333 Bold Kernel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>AI Suitability Score</strong></td>
+                <td style="background: #f0fdf4; font-weight: 800; color: #047857;">95% (Highest)</td>
+                <td>89%</td>
+                <td>91%</td>
+              </tr>
+              <tr>
+                <td><strong>Manufacturer</strong></td>
+                <td style="background: #f0fdf4;">Corteva Agriscience</td>
+                <td>Kaveri Seeds</td>
+                <td>CP Seeds</td>
+              </tr>
+              <tr>
+                <td><strong>Growing Duration</strong></td>
+                <td style="background: #f0fdf4;">108 Days</td>
+                <td style="color: #059669; font-weight: 700;">102 Days (Fastest)</td>
+                <td>112 Days</td>
+              </tr>
+              <tr>
+                <td><strong>Expected Yield Potential</strong></td>
+                <td style="background: #f0fdf4; font-weight: 700; color: #059669;">27.0 - 32.0 q/acre</td>
+                <td>24.5 - 28.5 q/acre</td>
+                <td>26.0 - 30.5 q/acre</td>
+              </tr>
+              <tr>
+                <td><strong>Seed Rate (kg/acre)</strong></td>
+                <td style="background: #f0fdf4;">8.0 kg (2 bags of 4kg)</td>
+                <td>7.5 kg</td>
+                <td>8.0 kg</td>
+              </tr>
+              <tr>
+                <td><strong>Seed Cost / Acre</strong></td>
+                <td style="background: #f0fdf4;">₹2,080</td>
+                <td style="color: #059669; font-weight: 700;">₹1,650 (Most Economical)</td>
+                <td>₹1,960</td>
+              </tr>
+              <tr>
+                <td><strong>Disease Resistance</strong></td>
+                <td style="background: #f0fdf4; font-weight: 600;">High (Leaf Blight & Mildew)</td>
+                <td>Medium-High</td>
+                <td>High (Stalk Rot tolerant)</td>
+              </tr>
+              <tr>
+                <td><strong>Industrial Sourcing Appeal</strong></td>
+                <td style="background: #f0fdf4; color: #047857; font-weight: 700;">Very High (Starch & Feed)</td>
+                <td>High</td>
+                <td>Very High (Wet Milling)</td>
+              </tr>
+              <tr>
+                <td><strong>Action</strong></td>
+                <td style="background: #f0fdf4;">
+                  <a href="/cultivation-plan?seed=Pioneer-P3396" class="btn btn-primary btn-sm" onclick="AgriState.setSelectedSeed('Pioneer P3396 Hybrid')">Select Pioneer</a>
+                </td>
+                <td>
+                  <a href="/cultivation-plan?seed=Kaveri-50" class="btn btn-secondary btn-sm" onclick="AgriState.setSelectedSeed('Kaveri 50 Super Hybrid')">Select Kaveri</a>
+                </td>
+                <td>
+                  <a href="/cultivation-plan?seed=CP-333" class="btn btn-secondary btn-sm" onclick="AgriState.setSelectedSeed('CP 333 Bold Kernel')">Select CP 333</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    function toggleCompareModal() {
+      const el = document.getElementById('compareSection');
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

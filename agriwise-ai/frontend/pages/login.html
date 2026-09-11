@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 Login — AGRIWISE AI</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body style="background: radial-gradient(circle at 50% 20%, #ecfdf5 0%, #f8fafc 80%);">
+
+  <main class="page-wrapper" style="display: flex; align-items: center; justify-content: center; min-height: 85vh;">
+    <div class="container" style="max-width: 480px;">
+      <div class="card" style="padding: 2.5rem; box-shadow: var(--shadow-xl);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌾</div>
+          <h2 style="font-size: 1.75rem; color: var(--primary-900);">Sign In to AgriWise AI</h2>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">Empowering Indian Agriculture with Intelligent Decisions</p>
+        </div>
+
+        <!-- One-Click Demo Role Logins for Hackathon Evaluators -->
+        <div style="background: #f0fdf4; border: 1px solid var(--primary-200); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #047857; text-transform: uppercase; margin-bottom: 0.5rem; text-align: center;">
+            ⚡ Quick Evaluator Demo Logins
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <button class="btn btn-secondary btn-sm" onclick="quickLogin('FARMER')">👨‍🌾 Farmer (Gurpreet)</button>
+            <button class="btn btn-secondary btn-sm" onclick="quickLogin('DEALER')">🏪 Input Dealer</button>
+            <button class="btn btn-secondary btn-sm" onclick="quickLogin('TRANSPORTER')">🚛 Transporter</button>
+            <button class="btn btn-secondary btn-sm" onclick="quickLogin('BUYER')">🏢 Wholesale Buyer</button>
+          </div>
+        </div>
+
+        <form onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Email or Mobile Number</label>
+            <input type="text" id="loginEmail" class="form-control" value="gurpreet.farmer@agriwise.ai" required>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label class="form-label" style="margin-bottom: 0;">Password</label>
+              <a href="/forgot-password" style="font-size: 0.8rem;">Forgot password?</a>
+            </div>
+            <input type="password" id="loginPassword" class="form-control" value="••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Role</label>
+            <select id="loginRole" class="form-control">
+              <option value="FARMER" selected>Farmer (Cultivator / Landowner)</option>
+              <option value="DEALER">Agricultural Input Dealer</option>
+              <option value="TRANSPORTER">Transport Logistics Provider</option>
+              <option value="BUYER">Wholesale Grain Buyer / Miller</option>
+              <option value="ADMIN">System Administrator</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" style="margin-top: 1rem;">
+            <span>Sign In to Dashboard</span>
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.88rem; color: var(--text-muted);">
+          Don't have an account? <a href="/register" style="font-weight: 700;">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/state.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/navigation.js"></script>
+  <script>
+    function quickLogin(role) {
+      AgriState.setRole(role);
+      if (role === 'FARMER') window.location.href = '/dashboard';
+      else if (role === 'DEALER') window.location.href = '/dealer-dashboard';
+      else if (role === 'TRANSPORTER') window.location.href = '/transport-dashboard';
+      else if (role === 'BUYER') window.location.href = '/buyer-dashboard';
+      else window.location.href = '/admin';
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const role = document.getElementById('loginRole').value;
+      quickLogin(role);
+    }
+  </script>
+</body>
+</html>

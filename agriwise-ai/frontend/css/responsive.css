@@ -1,0 +1,113 @@
+/* ==========================================================================
+   🌾 AGRIWISE AI - Responsive & Mobile Layout Stylesheet
+   Mobile Navigation Drawer, Touch-friendly Targets & Responsive Breakpoints
+   ========================================================================== */
+
+/* Mobile Bottom Navigation Bar (Visible only on screens < 768px) */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  border-top: 1px solid var(--border-light);
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  height: 100%;
+}
+
+.mobile-nav-item.active, .mobile-nav-item:hover {
+  color: var(--primary-600);
+}
+
+.mobile-nav-icon {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+/* Breakpoint: Desktop & Tablets (< 1024px) */
+@media (max-width: 1024px) {
+  .marketplace-layout {
+    grid-template-columns: 1fr;
+  }
+  .filter-sidebar {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Breakpoint: Mobile Devices (< 768px) */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .demo-journey-banner {
+    padding: 0 0.75rem;
+    font-size: 0.76rem;
+  }
+
+  .demo-journey-banner .demo-banner-left span.banner-text-long {
+    display: none;
+  }
+
+  .nav-links {
+    display: none; /* Replaced by mobile bottom nav & drawer */
+  }
+
+  .mobile-bottom-nav {
+    display: grid;
+  }
+
+  .page-wrapper {
+    padding-bottom: 5.5rem;
+  }
+
+  .page-title-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .page-title-left h1 {
+    font-size: 1.6rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .role-badge-selector {
+    display: none; /* Accessible in mobile drawer/profile */
+  }
+}
